@@ -1,0 +1,10 @@
+# Static Redirects
+/services/sharm-airport-lounges               /services/hurghada-airport-lounges               301
+/services/cairo-airport-lounges               /services/hurghada-airport-lounges               301
+/airports/sharm-el-sheikh-international-airport /airports/hurghada-international-airport        301
+/airports/sharm-airport-terminal-1            /airports/hurghada-airport-terminal-1           301
+/airports/sharm-airport-terminal-2            /airports/hurghada-airport-terminal-2           301
+/airports/cairo-international-airport         /airports/hurghada-international-airport        301
+/airports/cairo-airport-terminal-1            /airports/hurghada-airport-terminal-1           301
+/airports/cairo-airport-terminal-2            /airports/hurghada-airport-terminal-2           301
+/airports/cairo-airport-terminal-3            /airports/hurghada-airport-terminal-1           301

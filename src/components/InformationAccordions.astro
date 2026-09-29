@@ -1,0 +1,117 @@
+---
+const infoPanels = [
+  {
+    id: "return-instructions",
+    title: "Resort departure and airport drop-off timing",
+    badge: "DEPARTURES",
+    summary: "Essential advice on scheduling resort pickups for outbound flights from Hurghada Airport.",
+    details: `
+      <p class="mb-3">When booking a return transfer from your resort or private villa back to Hurghada International Airport (HRG), we recommend scheduling your vehicle pickup:</p>
+      <ul class="list-disc list-inside space-y-1.5 mb-3 text-slate-600 pl-2">
+        <li><strong>International Flights (Europe, UK, Gulf, Charters):</strong> At least 3 hours prior to scheduled departure.</li>
+        <li><strong>Domestic Flights (Cairo, Sphinx, Luxor, Sharm):</strong> At least 2 hours prior to scheduled departure.</li>
+        <li><strong>Departing from El Gouna, Makadi Bay, or Sahl Hasheesh:</strong> Schedule pickup at least 3 to 3.5 hours prior to departure to allow for scenic highway transit and airport check-in.</li>
+        <li><strong>Departing from Soma Bay, Safaga, or El Quseir:</strong> Schedule pickup at least 3.5 to 4.5 hours prior to flight departure.</li>
+      </ul>
+      <p>Our chauffeurs monitor resort road traffic, dropping you right curbside at the departures hall entrance of Terminal 1 or Terminal 2.</p>
+    `
+  },
+  {
+    id: "luggage-guidance",
+    title: "Luggage guidance, diving & kitesurfing equipment sizing",
+    badge: "BAGGAGE",
+    summary: "Clear baggage allowances per vehicle category so you choose the right car size for suitcases and water sports gear.",
+    details: `
+      <p class="mb-3">To ensure a comfortable ride across the Red Sea Riviera, refer to our luggage capacities per vehicle category:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-3">
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="font-bold text-slate-900 block text-xs">Standard Sedan</span>
+          <span class="text-xs text-slate-500">Max 2 checked suitcases (23kg) + 2 hand luggage</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="font-bold text-slate-900 block text-xs">Private Minivan</span>
+          <span class="text-xs text-slate-500">Max 6 large suitcases + diving/kite bags & strollers</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="font-bold text-slate-900 block text-xs">Executive VIP Sedan</span>
+          <span class="text-xs text-slate-500">Max 3 medium suitcases + executive carry-ons</span>
+        </div>
+      </div>
+      <p class="text-xs text-slate-500">Traveling with scuba diving gear boxes, kite-surf board bags, baby strollers, or golf equipment? We recommend choosing our Private Minivan or Airport Minibus category for maximum room.</p>
+    `
+  },
+  {
+    id: "meeting-points",
+    title: "Terminal 1 & Terminal 2 meeting points",
+    badge: "ARRIVALS",
+    summary: "Exact terminal locations where your chauffeur will be waiting outside with your name sign.",
+    details: `
+      <p class="mb-3">Hurghada International Airport has two active passenger terminals. Under Egyptian civil aviation security rules, private chauffeurs greet passengers outside the terminal exit doors:</p>
+      <ul class="space-y-2 mb-2 text-slate-600">
+        <li class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-xs">
+          <a href="/airports/hurghada-airport-terminal-1" class="text-indigo-600 font-bold hover:underline">Terminal 1 (International Flights & European Charters):</a> Chauffeur waits immediately outside the main sliding glass exit doors in the covered passenger greeting bay holding a clear sign with your name.
+        </li>
+        <li class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-xs">
+          <a href="/airports/hurghada-airport-terminal-2" class="text-indigo-600 font-bold hover:underline">Terminal 2 (EgyptAir, Domestic & Regional):</a> Chauffeur waits right outside the terminal arrival exit doors at the curbside reception zone.
+        </li>
+      </ul>
+      <p class="text-xs text-slate-500">A complimentary 60-minute waiting time begins only from your flight's actual touchdown time. <a href="/airports/hurghada-international-airport" class="text-indigo-600 font-semibold hover:underline">View comprehensive terminal guides →</a></p>
+    `
+  },
+  {
+    id: "egypt-visa-guide",
+    title: "Egypt Tourist Visa ($25 USD) on arrival vs. Egypt eVisa",
+    badge: "VISA GUIDE",
+    summary: "Important visa regulations for tourists landing at Hurghada International Airport.",
+    details: `
+      <p class="mb-3">Unlike Sharm El Sheikh, Hurghada is located in mainland Egypt (Red Sea Governorate), meaning the free Sinai stamp does not apply here:</p>
+      <ul class="list-disc list-inside space-y-1.5 mb-3 text-slate-600 pl-2">
+        <li><strong>Visa on Arrival ($25 USD):</strong> Citizens of the European Union, United Kingdom, United States, Canada, Australia, and other eligible countries can obtain their tourist visa directly upon arrival at Hurghada Airport. Visit the official 24/7 Banque Misr or National Bank of Egypt kiosk in the arrivals concourse immediately before passport control. The fee is $25 USD cash (or EUR/GBP equivalent).</li>
+        <li><strong>Official Online eVisa:</strong> You can also apply online in advance via the official Egyptian Government eVisa portal. Bring a printed copy of your approved eVisa to present at immigration.</li>
+      </ul>
+    `
+  }
+];
+---
+
+<section class="py-16 md:py-24 bg-white border-b border-slate-200/60">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-12">
+      <div class="text-xs font-black tracking-widest text-indigo-600 uppercase mb-2">
+        HELPFUL TRAVELER INFORMATION
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        Essential Arrival, Visa & Departure Information
+      </h2>
+      <p class="text-slate-500 text-sm mt-2">
+        Everything you need to know about Hurghada Airport procedures, meeting points, and Red Sea travel advice.
+      </p>
+    </div>
+
+    <!-- Accordion Group -->
+    <div class="space-y-4">
+      {infoPanels.map((panel, idx) => (
+        <details class="group bg-slate-50 rounded-2xl border border-slate-200/80 transition-all duration-200 overflow-hidden" open={idx === 0}>
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none hover:bg-slate-100/60 transition-colors">
+            <div class="flex items-center gap-3 pr-4">
+              <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 shrink-0">
+                {panel.badge}
+              </span>
+              <span class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                {panel.title}
+              </span>
+            </div>
+            <div class="w-6 h-6 rounded-full bg-white border border-slate-200 flex items-center justify-center shrink-0 group-open:rotate-180 transition-transform">
+              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </summary>
+          <div class="px-5 pb-5 pt-2 text-xs sm:text-sm text-slate-600 border-t border-slate-200/40 leading-relaxed" set:html={panel.details} />
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>

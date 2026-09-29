@@ -1,0 +1,246 @@
+---
+interface TransferRoute {
+  id: string;
+  slug: string;
+  name: string;
+  destination: string;
+  badge: string;
+  duration: string;
+  distance: string;
+  vehicle: string;
+  pax: number;
+  luggage: number;
+  price: string;
+  currency: string;
+  image: string;
+}
+
+const routes: TransferRoute[] = [
+  {
+    id: "el-gouna",
+    slug: "hurghada-airport-to-el-gouna",
+    name: "El Gouna & Abu Tig Marina",
+    destination: "The Chedi, Steigenberger Golf, Casa Cook, Mövenpick",
+    badge: "MOST POPULAR",
+    duration: "30 - 35 mins",
+    distance: "38 km",
+    vehicle: "Standard Sedan / Minivan",
+    pax: 3,
+    luggage: 2,
+    price: "25",
+    currency: "$",
+    image: "/images/hero-banner.webp"
+  },
+  {
+    id: "sahl-hasheesh",
+    slug: "hurghada-airport-to-sahl-hasheesh",
+    name: "Sahl Hasheesh Luxury Bay",
+    destination: "Baron Palace, The Oberoi, Premier Le Reve, Tropitel",
+    badge: "LUXURY RESORTS",
+    duration: "20 - 25 mins",
+    distance: "22 km",
+    vehicle: "Private Sedan / Minivan",
+    pax: 3,
+    luggage: 2,
+    price: "18",
+    currency: "$",
+    image: "/images/hero-banner.webp"
+  },
+  {
+    id: "makadi-bay",
+    slug: "hurghada-airport-to-makadi-bay",
+    name: "Makadi Bay & Madinat Makadi",
+    destination: "Jaz Makadi, Steigenberger, Cleopatra Luxury, Labranda",
+    badge: "FAMILY RESORTS",
+    duration: "25 - 30 mins",
+    distance: "32 km",
+    vehicle: "Comfort Sedan / Minivan",
+    pax: 3,
+    luggage: 2,
+    price: "22",
+    currency: "$",
+    image: "/images/hero-banner.webp"
+  },
+  {
+    id: "soma-bay",
+    slug: "hurghada-airport-to-soma-bay",
+    name: "Soma Bay Peninsula Resorts",
+    destination: "Kempinski, The Cascades Thalasso, Sheraton, Robinson",
+    badge: "GOLF & THALASSO",
+    duration: "45 - 50 mins",
+    distance: "52 km",
+    vehicle: "Private Sedan / Minivan",
+    pax: 3,
+    luggage: 2,
+    price: "32",
+    currency: "$",
+    image: "/images/hero-banner.webp"
+  },
+  {
+    id: "hurghada-city",
+    slug: "hurghada-airport-to-hurghada-city",
+    name: "Hurghada City & Mamsha",
+    destination: "Steigenberger ALDAU, Sunrise Aqua Joy, Marriott, Hilton",
+    badge: "CITY RESORTS",
+    duration: "10 - 15 mins",
+    distance: "10 km",
+    vehicle: "Private Sedan / Minivan",
+    pax: 3,
+    luggage: 2,
+    price: "15",
+    currency: "$",
+    image: "/images/hero-banner.webp"
+  },
+  {
+    id: "safaga",
+    slug: "hurghada-airport-to-safaga",
+    name: "Safaga & Cruise Port",
+    destination: "Amarina Abu Soma, Menaville, Safaga Cruise Terminal",
+    badge: "PORT & WINDSURF",
+    duration: "50 - 60 mins",
+    distance: "60 km",
+    vehicle: "Private Minivan / Sedan",
+    pax: 4,
+    luggage: 4,
+    price: "35",
+    currency: "$",
+    image: "/images/alexandria-coast.webp"
+  }
+];
+---
+
+<section id="popular-transfers" class="py-20 md:py-24 bg-slate-50/60 border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Heading -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <div class="text-xs font-black tracking-widest text-indigo-600 uppercase mb-2">
+          FAVORITE RED SEA DESTINATIONS
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Popular Hurghada Airport Limousine & Private Transfer Routes
+        </h2>
+        <p class="text-slate-500 text-sm sm:text-base mt-2 max-w-2xl">
+          Fixed-price private transfers with your chauffeur meeting you outside Terminal 1 or 2 with your name sign. No taxi meters, no hidden surcharges.
+        </p>
+      </div>
+
+      <a 
+        href="/transfers" 
+        class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-indigo-600 hover:text-indigo-800 transition"
+      >
+        <span>View all Red Sea routes</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {routes.map((route) => (
+        <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+          
+          <div>
+            <!-- Card Header / Image Thumbnail -->
+            <div class="relative h-48 overflow-hidden bg-slate-100">
+              <picture>
+                <img 
+                  src={route.image} 
+                  alt={route.name}
+                  width="400"
+                  height="200"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+              </picture>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+              
+              <!-- Badge -->
+              <span class="absolute top-3 left-3 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 rounded-md shadow-xs">
+                {route.badge}
+              </span>
+
+              <!-- Route Title & Sub -->
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <h3 class="text-base sm:text-lg font-bold leading-tight drop-shadow-sm">
+                  {route.name}
+                </h3>
+                <p class="text-xs text-slate-300 truncate mt-0.5">
+                  {route.destination}
+                </p>
+              </div>
+            </div>
+
+            <!-- Route Specs -->
+            <div class="p-5 space-y-3.5">
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <div class="flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>{route.duration}</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span>{route.distance}</span>
+                </div>
+                <div class="flex items-center gap-1.5 col-span-2 pt-1 border-t border-slate-200/50">
+                  <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                  </svg>
+                  <span class="font-medium text-slate-700">{route.vehicle}</span>
+                </div>
+              </div>
+
+              <!-- Inclusions Check -->
+              <div class="space-y-1 text-xs text-slate-500 font-medium">
+                <div class="flex items-center gap-1.5 text-emerald-600">
+                  <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Driver meets outside terminal with name sign</span>
+                </div>
+                <div class="flex items-center gap-1.5 text-slate-500">
+                  <svg class="w-3.5 h-3.5 shrink-0 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Flight radar delay sync & 60m free wait</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price & Action CTA -->
+          <div class="p-5 pt-0 border-t border-slate-100 flex items-center justify-between mt-2">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 block leading-none">Starting From</span>
+              <span class="text-2xl font-black text-slate-900 tracking-tight">
+                {route.currency}{route.price}
+              </span>
+              <span class="text-[10px] text-slate-400 block">per private car</span>
+            </div>
+
+            <a 
+              href={`/transfers/${route.slug}`} 
+              class="px-4 py-2.5 bg-slate-900 hover:bg-amber-400 text-white hover:text-slate-950 font-bold text-xs rounded-xl shadow-xs transition-colors flex items-center gap-1 group/btn"
+            >
+              <span>View Route</span>
+              <svg class="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

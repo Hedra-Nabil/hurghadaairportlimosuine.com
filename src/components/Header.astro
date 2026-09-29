@@ -1,0 +1,347 @@
+---
+import { transferRoutes } from '../data/routes';
+import { airportGuides } from '../data/airports';
+---
+
+<header class="w-full bg-white border-b border-slate-100 sticky top-0 z-50 shadow-xs">
+  <!-- Top Support Bar -->
+  <div class="bg-slate-950 text-slate-300 text-xs py-1.5 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <span class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z"/>
+          </svg>
+          <span class="font-medium">24/7 Hurghada Dispatch:</span>
+          <a href="tel:+201094066018" class="text-white hover:text-amber-400 font-semibold transition">+20 10-940-66018</a>
+        </span>
+        <span class="hidden md:inline-block text-slate-700">|</span>
+        <span class="hidden md:flex items-center gap-1 text-slate-400">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Free Flight Tracking Included
+        </span>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center gap-1 text-slate-300 hover:text-white cursor-pointer transition">
+          <span class="font-semibold text-white">USD ($)</span>
+          <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        <span class="text-slate-700">|</span>
+        <div class="flex items-center gap-1.5 text-slate-300 hover:text-white cursor-pointer transition">
+          <span class="inline-block w-4 h-3 bg-red-600 rounded-xs overflow-hidden relative border border-slate-600">
+            <span class="absolute inset-0 bg-gradient-to-b from-red-600 via-white to-black"></span>
+          </span>
+          <span class="font-medium">English</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center group py-2">
+        <img 
+          src="/images/logo/logo-horizontal.png" 
+          alt="Hurghada Airport Limousine & Transfers" 
+          width="550"
+          height="120"
+          fetchpriority="high"
+          class="h-11 md:h-12 w-auto object-contain group-hover:opacity-95 transition-opacity"
+        />
+      </a>
+
+      <!-- Desktop Nav Links with Dropdowns -->
+      <nav class="hidden lg:flex items-center space-x-5 xl:space-x-7 text-sm font-semibold text-slate-700">
+        
+        <!-- Destinations Dropdown -->
+        <div class="relative group py-6">
+          <button type="button" class="flex items-center gap-1 hover:text-amber-500 transition focus:outline-none">
+            <span>Destinations</span>
+            <svg class="w-4 h-4 text-slate-400 group-hover:text-amber-500 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div class="absolute left-0 top-full hidden group-hover:block w-80 bg-white border border-slate-200 rounded-2xl shadow-xl p-3 z-50 transform opacity-0 group-hover:opacity-100 transition-all">
+            <div class="text-[10px] font-black uppercase text-slate-400 px-3 py-1.5 tracking-wider">Top Routes from HRG</div>
+            <div class="space-y-1">
+              {transferRoutes.slice(0, 6).map((route) => (
+                <a 
+                  href={`/transfers/${route.slug}`} 
+                  class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition group/item"
+                >
+                  <span class="text-xs font-bold text-slate-800 group-hover/item:text-amber-600">
+                    {route.destinationName}
+                  </span>
+                  <span class="text-[11px] font-black text-amber-500">
+                    ${route.startingPriceUSD}
+                  </span>
+                </a>
+              ))}
+            </div>
+            <div class="pt-2 mt-2 border-t border-slate-100">
+              <a href="/transfers" class="block text-center py-2 text-xs font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50/50 rounded-lg">
+                View All Destinations →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Airports Dropdown -->
+        <div class="relative group py-6">
+          <button type="button" class="flex items-center gap-1 hover:text-amber-500 transition focus:outline-none">
+            <span>Airport Guide</span>
+            <svg class="w-4 h-4 text-slate-400 group-hover:text-amber-500 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div class="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover:block w-[380px] bg-white border border-slate-200 rounded-2xl shadow-xl p-3 z-50 transform opacity-0 group-hover:opacity-100 transition-all">
+            <div class="flex items-center justify-between px-2.5 py-1.5 mb-1 border-b border-slate-100">
+              <span class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Terminal Guides & Pickups</span>
+              <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">HRG Terminals</span>
+            </div>
+            <div class="space-y-1">
+              {airportGuides.map((guide) => {
+                let badge = "HRG Hub";
+                let badgeClass = "bg-amber-50 text-amber-700 border border-amber-200/50";
+                let cleanTitle = "Hurghada Airport Overview";
+                let cleanDesc = "Terminals guide, Egypt visa & pickup";
+
+                if (guide.slug === "hurghada-airport-terminal-1") {
+                  badge = "Terminal 1";
+                  badgeClass = "bg-indigo-50 text-indigo-700 border border-indigo-200/50";
+                  cleanTitle = "Terminal 1 (T1)";
+                  cleanDesc = "International flights & European charters";
+                } else if (guide.slug === "hurghada-airport-terminal-2") {
+                  badge = "Terminal 2";
+                  badgeClass = "bg-blue-50 text-blue-700 border border-blue-200/50";
+                  cleanTitle = "Terminal 2 (T2)";
+                  cleanDesc = "EgyptAir, domestic & regional flights";
+                }
+
+                return (
+                  <a 
+                    href={`/airports/${guide.slug}`} 
+                    class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition group/item"
+                  >
+                    <div>
+                      <div class="text-xs font-bold text-slate-800 group-hover/item:text-amber-600 transition-colors">
+                        {cleanTitle}
+                      </div>
+                      <div class="text-[11px] text-slate-400 mt-0.5">
+                        {cleanDesc}
+                      </div>
+                    </div>
+                    <span class={`text-[10px] font-bold px-2 py-0.5 rounded-md shrink-0 ml-2 ${badgeClass}`}>
+                      {badge}
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <!-- Fleet & Extras Combined Dropdown -->
+        <div class="relative group py-6">
+          <button type="button" class="flex items-center gap-1 hover:text-amber-500 transition focus:outline-none">
+            <span>Fleet & Extras</span>
+            <svg class="w-4 h-4 text-slate-400 group-hover:text-amber-500 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div class="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover:block w-[520px] bg-white border border-slate-200 rounded-2xl shadow-xl p-4 z-50 transform opacity-0 group-hover:opacity-100 transition-all">
+            <div class="grid grid-cols-2 gap-3">
+              <!-- Fleet Section -->
+              <div>
+                <div class="text-[10px] font-black uppercase text-slate-400 px-2.5 py-1 tracking-wider">Vehicle Fleet</div>
+                <div class="space-y-1">
+                  <a href="/fleet/private-taxi" class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition group/item">
+                    <div>
+                      <div class="text-xs font-bold text-slate-800 group-hover/item:text-amber-600">Private Taxi</div>
+                      <div class="text-[10px] text-slate-400">Up to 3 Pax • Sedan</div>
+                    </div>
+                    <span class="text-xs font-black text-amber-500">From $15</span>
+                  </a>
+                  <a href="/fleet/private-minivan" class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition group/item">
+                    <div>
+                      <div class="text-xs font-bold text-slate-800 group-hover/item:text-amber-600">Private Minivan</div>
+                      <div class="text-[10px] text-slate-400">Up to 7 Pax • Family</div>
+                    </div>
+                    <span class="text-xs font-black text-amber-500">From $24</span>
+                  </a>
+                  <a href="/fleet/executive-vip" class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition group/item">
+                    <div>
+                      <div class="text-xs font-bold text-slate-800 group-hover/item:text-amber-600">Executive VIP</div>
+                      <div class="text-[10px] text-slate-400">Mercedes-Benz</div>
+                    </div>
+                    <span class="text-xs font-black text-amber-500">From $45</span>
+                  </a>
+                  <a href="/fleet/airport-minibus" class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition group/item">
+                    <div>
+                      <div class="text-xs font-bold text-slate-800 group-hover/item:text-amber-600">Airport Minibus</div>
+                      <div class="text-[10px] text-slate-400">Up to 16 Pax • Group</div>
+                    </div>
+                    <span class="text-xs font-black text-amber-500">From $65</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Extras Section -->
+              <div>
+                <div class="text-[10px] font-black uppercase text-slate-400 px-2.5 py-1 tracking-wider">Airport Extras</div>
+                <div class="space-y-1">
+                  <a href="/services/vip-fast-track" class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition group/item">
+                    <div>
+                      <div class="text-xs font-bold text-slate-800 group-hover/item:text-amber-600">VIP Fast-Track</div>
+                      <div class="text-[10px] text-slate-400">Skip Visa & Customs</div>
+                    </div>
+                    <span class="text-xs font-black text-amber-500">$45</span>
+                  </a>
+                  <a href="/services/child-safety-seats" class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition group/item">
+                    <div>
+                      <div class="text-xs font-bold text-slate-800 group-hover/item:text-amber-600">Child Car Seats</div>
+                      <div class="text-[10px] text-slate-400">ISOFIX Certified</div>
+                    </div>
+                    <span class="text-xs font-black text-amber-500">$10</span>
+                  </a>
+                  <a href="/services/hurghada-airport-lounges" class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition group/item">
+                    <div>
+                      <div class="text-xs font-bold text-slate-800 group-hover/item:text-amber-600">Pearl VIP Lounge Pass</div>
+                      <div class="text-[10px] text-slate-400">Buffet & Wi-Fi</div>
+                    </div>
+                    <span class="text-xs font-black text-amber-500">$38</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2.5 mt-2.5 border-t border-slate-100 flex items-center justify-between px-1">
+              <a href="/fleet" class="text-xs font-bold text-indigo-600 hover:text-indigo-800">
+                View Full Fleet & Luggage Guide →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- How it Works -->
+        <a href="/how-it-works" class="hover:text-amber-500 transition">How It Works</a>
+
+        <!-- Support Dropdown -->
+        <div class="relative group py-6">
+          <button type="button" class="flex items-center gap-1 hover:text-amber-500 transition focus:outline-none">
+            <span>Support</span>
+            <svg class="w-4 h-4 text-slate-400 group-hover:text-amber-500 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div class="absolute right-0 top-full hidden group-hover:block w-60 bg-white border border-slate-200 rounded-2xl shadow-xl p-3 z-50 transform opacity-0 group-hover:opacity-100 transition-all">
+            <a href="/about-us" class="block p-2 rounded-xl hover:bg-slate-50 text-xs font-bold text-slate-800 hover:text-amber-600 transition">
+              About Us & Safety
+            </a>
+            <a href="/faq" class="block p-2 rounded-xl hover:bg-slate-50 text-xs font-bold text-slate-800 hover:text-amber-600 transition">
+              Help Center & FAQs
+            </a>
+            <a href="/contact" class="block p-2 rounded-xl hover:bg-slate-50 text-xs font-bold text-slate-800 hover:text-amber-600 transition">
+              Contact 24/7 Dispatch
+            </a>
+          </div>
+        </div>
+
+      </nav>
+
+      <!-- Right Action CTA -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a 
+          href="/transfers" 
+          class="px-6 py-2.5 text-xs font-black text-slate-950 bg-amber-400 hover:bg-amber-500 rounded-xl transition shadow-sm hover:shadow flex items-center gap-1.5"
+        >
+          <span>Book Transfer</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        id="mobile-menu-btn" 
+        type="button" 
+        class="lg:hidden p-2.5 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+        aria-label="Toggle Navigation"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-4 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
+    <div class="space-y-1">
+      <div class="text-xs font-black uppercase tracking-wider text-slate-400 px-2 py-1">Vehicle Fleet</div>
+      <a href="/fleet" class="block py-1.5 px-3 text-xs font-bold text-slate-900 hover:bg-amber-50 rounded-xl">All Fleet & Luggage Guide</a>
+      <a href="/fleet/private-taxi" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">🚕 Private Taxi (From $15)</a>
+      <a href="/fleet/private-minivan" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">🚐 Private Minivan (From $24)</a>
+      <a href="/fleet/executive-vip" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">⭐ Executive VIP (From $45)</a>
+      <a href="/fleet/airport-minibus" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">🚌 Airport Minibus (From $65)</a>
+    </div>
+
+    <div class="space-y-1 pt-2 border-t border-slate-100">
+      <div class="text-xs font-black uppercase tracking-wider text-slate-400 px-2 py-1">Airport Extras</div>
+      <a href="/services/vip-fast-track" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">⚡ VIP Fast-Track ($45)</a>
+      <a href="/services/child-safety-seats" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">👶 Child Safety Seats ($10)</a>
+      <a href="/services/hurghada-airport-lounges" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">🛋️ Pearl VIP Executive Lounge ($38)</a>
+    </div>
+
+    <div class="space-y-1 pt-2 border-t border-slate-100">
+      <div class="text-xs font-black uppercase tracking-wider text-slate-400 px-2 py-1">Destinations</div>
+      <a href="/transfers" class="block py-2 px-3 text-sm font-bold text-slate-900 hover:bg-amber-50 rounded-xl">All Destinations & Routes</a>
+    </div>
+
+    <div class="space-y-1 pt-2 border-t border-slate-100">
+      <div class="text-xs font-black uppercase tracking-wider text-slate-400 px-2 py-1">Airports</div>
+      {airportGuides.map((guide) => (
+        <a href={`/airports/${guide.slug}`} class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">
+          {guide.shortTitle}
+        </a>
+      ))}
+    </div>
+
+    <div class="space-y-1 pt-2 border-t border-slate-100">
+      <div class="text-xs font-black uppercase tracking-wider text-slate-400 px-2 py-1">Support</div>
+      <a href="/how-it-works" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">How It Works</a>
+      <a href="/about-us" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">About Us & Safety</a>
+      <a href="/faq" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">Help Center & FAQ</a>
+      <a href="/contact" class="block py-1.5 px-3 text-xs font-semibold text-slate-700 hover:text-amber-600">Contact Dispatch</a>
+    </div>
+
+    <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
+      <a href="/transfers" class="w-full text-center py-3 text-sm font-black text-slate-950 bg-amber-400 rounded-xl">Book Transfer Now</a>
+      <a href="https://wa.me/201094066018" target="_blank" class="w-full text-center py-3 text-sm font-bold text-emerald-700 bg-emerald-50 rounded-xl">Chat on WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

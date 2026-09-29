@@ -1,0 +1,76 @@
+---
+const faqs = [
+  {
+    q: "Where will I meet my driver at Hurghada Airport?",
+    a: "Your chauffeur will wait right outside the arrival terminal sliding glass exit doors (at Terminal 1 or Terminal 2), immediately after you clear customs and baggage reclaim. They will hold an official personalized greeting sign clearly displaying your name."
+  },
+  {
+    q: "Do I need to pay for an Egyptian visa upon arrival at Hurghada Airport?",
+    a: "Yes. Hurghada is located in the Red Sea Governorate on mainland Egypt (unlike Sinai which offers a free Sinai stamp). All foreign tourists from eligible nations must obtain an Egypt Tourist Visa ($25 USD). You can purchase the visa sticker with cash at the official bank kiosks (Banque Misr / National Bank of Egypt) located directly inside arrivals before passport control, or apply online in advance for an official Egypt eVisa."
+  },
+  {
+    q: "What happens if my flight to Hurghada is delayed?",
+    a: "No need to worry! We track your flight in real time using your flight number. Your driver's arrival time is automatically synchronized with your actual touchdown time, and your complimentary 60-minute wait time begins only after your flight actually lands."
+  },
+  {
+    q: "Are the prices listed per person or per vehicle?",
+    a: "All our prices are 100% per private vehicle, not per passenger. The price shown for your selected car covers your entire party up to the vehicle's maximum passenger and luggage capacity."
+  },
+  {
+    q: "Can your drivers transport us directly to El Gouna, Sahl Hasheesh, or Soma Bay?",
+    a: "Yes! We specialize in direct, private resort transfers across the entire Red Sea Riviera. We pick you up curbside at Hurghada Airport and drive you smoothly to any hotel, resort, or private villa in El Gouna, Sahl Hasheesh, Makadi Bay, Soma Bay, or Safaga."
+  },
+  {
+    q: "How does free cancellation work?",
+    a: "You can cancel or modify your transfer reservation free of charge up to 24 hours prior to your scheduled pickup time with a 100% full refund, no questions asked. Simply contact our 24/7 support team or message our WhatsApp dispatch."
+  }
+];
+---
+
+<section id="faqs" class="py-20 md:py-24 bg-white border-b border-slate-100">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-14">
+      <div class="text-xs font-black tracking-widest text-indigo-600 uppercase mb-2">
+        HELP & SUPPORT
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-slate-500 text-sm sm:text-base mt-2">
+        Clear, transparent answers about Hurghada Airport terminal meeting points, Egypt tourist visas, flight delays, and cancellation policies.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {faqs.map((item, index) => (
+        <details class="group bg-slate-50/50 hover:bg-white rounded-2xl border border-slate-100 shadow-sm transition-all open:bg-white open:border-slate-200 open:shadow-md">
+          <summary class="p-6 cursor-pointer list-none flex items-center justify-between font-bold text-slate-900 hover:text-indigo-600 transition select-none">
+            <span class="text-base sm:text-lg font-bold pr-4">{item.q}</span>
+            <div class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-amber-400 text-slate-600 group-open:text-slate-950 flex items-center justify-center transition-all group-open:rotate-180 flex-shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </summary>
+          <div class="px-6 pb-6 pt-1 border-t border-slate-100 text-sm text-slate-600 leading-relaxed">
+            {item.a}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div class="mt-10 text-center">
+      <a 
+        href="/faq" 
+        class="inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 hover:border-slate-300 text-slate-800 font-bold text-xs rounded-xl shadow-xs hover:shadow transition"
+      >
+        <span>View all 20+ Frequently Asked Questions</span>
+        <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

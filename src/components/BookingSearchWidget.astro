@@ -1,0 +1,29 @@
+---
+// Egypt Limo Booking Widget — Official Partner Integration
+interface Props {
+  pickup?: string;
+  language?: string;
+  targetId?: string;
+  surface?: "light" | "transparent";
+  defaultDropoff?: string;
+  customActionUrl?: string;
+  isStandalone?: boolean;
+}
+
+const { 
+  pickup = "Hurghada International Airport",
+  language = "en",
+  targetId = "egyptlimo-booking",
+  surface
+} = Astro.props;
+---
+
+<div id={targetId}></div>
+<script
+  src="https://booking.egyptlimo.com/widget.js"
+  data-target={targetId}
+  data-language={language}
+  data-pickup={pickup}
+  {...(surface ? { "data-surface": surface } : {})}
+  defer
+></script>

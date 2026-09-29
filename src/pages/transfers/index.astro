@@ -1,0 +1,288 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import BookingSearchWidget from '../../components/BookingSearchWidget.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import { transferRoutes } from '../../data/routes';
+
+const pageTitle = "Hurghada Airport Transfer Routes | All Destinations & Fixed Rates";
+const pageDesc = "Explore all Hurghada Airport transfer routes from HRG. Compare fixed prices, travel times, and book direct hotel transfers to El Gouna, Sahl Hasheesh, Makadi Bay & Soma Bay.";
+const canonicalUrl = "https://hurghadaairportlimousine.com/transfers/";
+
+// Group routes by region
+const hurghadaResortsRoutes = transferRoutes.filter(r => [
+  "hurghada-airport-to-el-gouna",
+  "hurghada-airport-to-sahl-hasheesh",
+  "hurghada-airport-to-makadi-bay",
+  "hurghada-airport-to-soma-bay",
+  "hurghada-airport-to-hurghada-city"
+].includes(r.slug));
+
+const southernCoastRoutes = transferRoutes.filter(r => [
+  "hurghada-airport-to-safaga",
+  "hurghada-airport-to-el-quseir",
+  "hurghada-airport-to-port-ghalib-marsa-alam"
+].includes(r.slug));
+
+const overlandRoutes = transferRoutes.filter(r => [
+  "hurghada-to-luxor",
+  "hurghada-to-cairo"
+].includes(r.slug));
+
+const transferCatalogSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Hurghada Airport Transfer Routes Directory",
+    "description": "Complete directory of fixed-price private transfer and limousine routes from Hurghada International Airport (HRG) across the Red Sea Riviera.",
+    "numberOfItems": transferRoutes.length,
+    "itemListElement": transferRoutes.map((route, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": `https://hurghadaairportlimousine.com/transfers/${route.slug}/`,
+      "name": route.heroHeadline
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://hurghadaairportlimousine.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Transfers",
+        "item": canonicalUrl
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are airport transfers available from both Terminal 1 and Terminal 2 at Hurghada Airport?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, our private chauffeurs operate round-the-clock across both Terminal 1 and Terminal 2 at Hurghada International Airport with personalized name signs outside arrivals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are tolls, airport gate fees, and resort passes included in the rates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All prices displayed across our routes catalog are 100% fixed and inclusive of airport entrance fees, parking tickets, and highway checkpoints."
+        }
+      }
+    ]
+  }
+];
+---
+
+<Layout 
+  title={pageTitle} 
+  description={pageDesc} 
+  canonicalUrl={canonicalUrl}
+  schema={transferCatalogSchemas}
+>
+  <Header />
+
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Header Banner -->
+    <div class="bg-slate-950 text-white pt-10 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto relative z-10 space-y-4 text-center md:text-left">
+        <Breadcrumbs items={[{ name: "Transfers", url: "/transfers" }]} />
+        
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-black uppercase tracking-wider">
+          Destination Directory
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white">
+          Hurghada Airport Transfers & Resort Routes
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
+          Select your destination below to view route guides, verified drive times, terminal arrival instructions, and transparent vehicle class pricing.
+        </p>
+
+        <div class="pt-6">
+          <BookingSearchWidget pickup="Hurghada International Airport" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Catalog Sections -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+      
+      <!-- Region 1: Resort Bays & Lagoons -->
+      <section class="space-y-6">
+        <div class="border-b border-slate-200 pb-3 flex items-baseline justify-between">
+          <div>
+            <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+              Hurghada Resort Bays & Lagoons
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">El Gouna Lagoons, Sahl Hasheesh, Makadi Bay & Soma Bay</p>
+          </div>
+          <span class="text-xs font-bold text-indigo-600">{hurghadaResortsRoutes.length} Routes</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {hurghadaResortsRoutes.map((route) => (
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-lg transition flex flex-col justify-between overflow-hidden">
+              <div class="relative h-44 overflow-hidden">
+                <img 
+                  src={route.featuredImage} 
+                  alt={route.destinationName} 
+                  width="800"
+                  height="450"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent"></div>
+                <span class="absolute bottom-3 left-3 text-xs font-bold text-white flex items-center gap-1">
+                  ⏱️ {route.driveTimeMin} ({route.distanceKm} km)
+                </span>
+              </div>
+              <div class="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 class="text-lg font-bold text-slate-900">{route.destinationName}</h3>
+                  <p class="text-xs text-slate-500 mt-1 line-clamp-2">{route.overview}</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] text-slate-400 uppercase font-bold block">From</span>
+                    <span class="text-2xl font-black text-slate-900">${route.startingPriceUSD}</span>
+                  </div>
+                  <a 
+                    href={`/transfers/${route.slug}`} 
+                    class="px-4 py-2 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs rounded-xl shadow-xs transition"
+                  >
+                    View Route & Book →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Region 2: Southern Red Sea Coast -->
+      <section class="space-y-6">
+        <div class="border-b border-slate-200 pb-3 flex items-baseline justify-between">
+          <div>
+            <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+              Southern Red Sea Coast & Diving Havens
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Safaga Port, Historic El Quseir & Port Ghalib / Marsa Alam</p>
+          </div>
+          <span class="text-xs font-bold text-indigo-600">{southernCoastRoutes.length} Routes</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {southernCoastRoutes.map((route) => (
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-lg transition flex flex-col justify-between overflow-hidden">
+              <div class="relative h-44 overflow-hidden">
+                <img 
+                  src={route.featuredImage} 
+                  alt={route.destinationName} 
+                  width="800"
+                  height="450"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent"></div>
+                <span class="absolute bottom-3 left-3 text-xs font-bold text-white flex items-center gap-1">
+                  ⏱️ {route.driveTimeMin} ({route.distanceKm} km)
+                </span>
+              </div>
+              <div class="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 class="text-lg font-bold text-slate-900">{route.destinationName}</h3>
+                  <p class="text-xs text-slate-500 mt-1 line-clamp-2">{route.overview}</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] text-slate-400 uppercase font-bold block">From</span>
+                    <span class="text-2xl font-black text-slate-900">${route.startingPriceUSD}</span>
+                  </div>
+                  <a 
+                    href={`/transfers/${route.slug}`} 
+                    class="px-4 py-2 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs rounded-xl shadow-xs transition"
+                  >
+                    View Route & Book →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Region 3: Overland Chauffeur & Day Excursions -->
+      <section class="space-y-6">
+        <div class="border-b border-slate-200 pb-3 flex items-baseline justify-between">
+          <div>
+            <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+              Overland Chauffeur & Nile Valley Excursions
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Luxor Ancient Temples & Nile Cruises, or Long-Distance Cairo Chauffeur</p>
+          </div>
+          <span class="text-xs font-bold text-indigo-600">{overlandRoutes.length} Routes</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {overlandRoutes.map((route) => (
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-lg transition flex flex-col justify-between overflow-hidden">
+              <div class="relative h-44 overflow-hidden">
+                <img 
+                  src={route.featuredImage} 
+                  alt={route.destinationName} 
+                  width="800"
+                  height="450"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent"></div>
+                <span class="absolute bottom-3 left-3 text-xs font-bold text-white flex items-center gap-1">
+                  ⏱️ {route.driveTimeMin} ({route.distanceKm} km)
+                </span>
+              </div>
+              <div class="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 class="text-lg font-bold text-slate-900">{route.destinationName}</h3>
+                  <p class="text-xs text-slate-500 mt-1 line-clamp-2">{route.overview}</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] text-slate-400 uppercase font-bold block">From</span>
+                    <span class="text-2xl font-black text-slate-900">${route.startingPriceUSD}</span>
+                  </div>
+                  <a 
+                    href={`/transfers/${route.slug}`} 
+                    class="px-4 py-2 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs rounded-xl shadow-xs transition"
+                  >
+                    View Route & Book →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

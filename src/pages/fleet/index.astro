@@ -1,0 +1,236 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import BookingSearchWidget from '../../components/BookingSearchWidget.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import { fleetVehicles } from '../../data/fleet';
+
+const pageTitle = "Hurghada Airport Transfer Fleet | VIP Sedan, Minivan & Mercedes";
+const pageDesc = "Explore the Hurghada Airport Limousine & Transfers fleet: private sedans, family minivans & VIP Mercedes cars with fixed rates and flight tracking.";
+const canonicalUrl = "https://hurghadaairportlimousine.com/fleet/";
+
+const fleetSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Hurghada Airport Transfers Fleet Categories",
+  "itemListElement": fleetVehicles.map((v, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": v.name,
+    "description": v.description
+  }))
+};
+---
+
+<Layout 
+  title={pageTitle} 
+  description={pageDesc} 
+  canonicalUrl={canonicalUrl}
+  schema={fleetSchema}
+>
+  <Header />
+
+  <main class="bg-white">
+    <!-- Hero Banner -->
+    <section class="relative bg-slate-950 text-white pt-10 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div class="max-w-6xl mx-auto space-y-4">
+        <Breadcrumbs items={[{ name: "Vehicle Fleet & Luggage", url: "/fleet" }]} />
+        
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-black uppercase tracking-wider">
+          Inspected & Licensed Fleet
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white max-w-3xl">
+          Hurghada Airport Transfers Fleet & Luggage Guide
+        </h1>
+
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+          From solo travelers with carry-ons to large tour groups with scuba & kite gear, explore our verified vehicles and choose the perfect fit for your arrival in Hurghada and the Red Sea.
+        </p>
+
+        <div class="pt-6">
+          <BookingSearchWidget pickup="Hurghada International Airport" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Luggage & Capacity Comparison Table -->
+    <section class="py-16 bg-slate-50 border-b border-slate-200/60">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <span class="text-xs font-black tracking-widest text-indigo-600 uppercase block mb-1">
+            CAPACITY MATRIX
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Vehicle Passenger & Luggage Allowance
+          </h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-1">
+            Standard large suitcase: 28 inches (70 cm / 23 kg). Cabin bag: 20–22 inches.
+          </p>
+        </div>
+
+        <div class="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-sm">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-slate-900 text-white text-[11px] uppercase tracking-wider">
+              <tr>
+                <th class="p-4">Vehicle Category</th>
+                <th class="p-4">Max Passengers</th>
+                <th class="p-4">Large Checked Bags</th>
+                <th class="p-4">Hand Luggage</th>
+                <th class="p-4">Popular Models</th>
+                <th class="p-4">Sample Rate</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 font-medium text-slate-700">
+              {fleetVehicles.map((v) => (
+                <tr class="hover:bg-slate-50/80 transition">
+                  <td class="p-4">
+                    <a href={`/fleet/${v.slug}`} class="font-bold text-slate-900 hover:text-indigo-600 transition flex items-center gap-2 group">
+                      <span class="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform"></span>
+                      <span>{v.title}</span>
+                      <span class="text-[10px] text-indigo-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                    </a>
+                  </td>
+                  <td class="p-4">{v.maxPax} Passengers</td>
+                  <td class="p-4">{v.maxLuggageLarge} Large Suitcases</td>
+                  <td class="p-4">{v.maxLuggageCabin} Carry-ons</td>
+                  <td class="p-4 text-slate-500">{v.models.slice(0, 3).join(", ")}</td>
+                  <td class="p-4 font-black text-slate-900">${v.samplePriceCairo} USD</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Individual Vehicle Detailed Cards -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        {fleetVehicles.map((v, idx) => (
+          <div class={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+            
+            <!-- Visual Box -->
+            <div class="lg:col-span-6 rounded-3xl overflow-hidden border border-slate-200/90 bg-gradient-to-b from-slate-50 to-slate-100/60 p-6 sm:p-8 shadow-md relative group flex flex-col justify-between">
+              <div class="flex items-center justify-between w-full mb-2">
+                <span class="px-3 py-1 bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-lg shadow-sm">
+                  {v.tag}
+                </span>
+                <span class="text-xs font-black text-slate-900 bg-white/90 border border-slate-200 px-3 py-1 rounded-lg shadow-sm">
+                  From ${v.samplePriceCairo} USD
+                </span>
+              </div>
+
+              <div class="w-full h-56 sm:h-64 flex items-center justify-center my-3">
+                <img 
+                  src={v.image} 
+                  alt={v.alt} 
+                  title={v.alt}
+                  width="800"
+                  height="500"
+                  loading="lazy" 
+                  decoding="async"
+                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-lg" 
+                />
+              </div>
+
+              <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-600 font-semibold">
+                <span>{v.capacity}</span>
+                <span class="text-indigo-600 group-hover:translate-x-1 transition-transform font-bold">Explore Models →</span>
+              </div>
+            </div>
+
+            <!-- Content Box -->
+            <div class="lg:col-span-6 space-y-5">
+              <div class="space-y-1">
+                <span class="text-xs font-black uppercase text-indigo-600 tracking-wider">
+                  {v.category}
+                </span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                  <a href={`/fleet/${v.slug}`} class="hover:text-indigo-600 transition">
+                    {v.name}
+                  </a>
+                </h3>
+              </div>
+
+              <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                {v.description}
+              </p>
+
+              <!-- Example Brands & Models -->
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1">
+                <div class="text-[11px] font-black uppercase text-slate-500 tracking-wider">
+                  Typical Models Dispatched in this Category:
+                </div>
+                <div class="text-xs font-bold text-slate-800">
+                  {v.models.join(" • ")}
+                </div>
+              </div>
+
+              <!-- Features Grid -->
+              <div class="space-y-2">
+                <span class="text-xs font-bold uppercase text-slate-400 block">Vehicle Features:</span>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
+                  {v.features.slice(0, 4).map((f) => (
+                    <li class="flex items-center gap-2">
+                      <span class="text-emerald-500 font-bold">✓</span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600">
+                <strong class="text-slate-900">Best Suited For:</strong> {v.bestFor}
+              </div>
+
+              <div class="pt-2 flex flex-wrap items-center gap-4">
+                <a 
+                  href={`/fleet/${v.slug}`}
+                  class="px-6 py-3 bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs rounded-xl shadow-md transition transform hover:-translate-y-0.5 inline-flex items-center gap-1.5"
+                >
+                  <span>View Rates & Brand Guide</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a 
+                  href={`/fleet/${v.slug}#booking-widget`}
+                  class="px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl shadow-sm transition"
+                >
+                  Book This Class
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Child Seats & Special Luggage Callout -->
+    <section class="py-16 bg-slate-900 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-black">
+          Traveling with Scuba Diving Gear, Golf Bags, or Infant Seats?
+        </h2>
+        <p class="text-slate-300 text-sm leading-relaxed max-w-2xl mx-auto">
+          We provide certified European infant and booster seats on request, and our spacious private minivans easily accommodate folding wheelchairs, diving equipment boxes, and kite-surf gear. Simply let our 24/7 dispatch know during booking.
+        </p>
+        <div class="pt-4">
+          <a 
+            href="https://wa.me/201094066018" 
+            target="_blank" 
+            class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl shadow-lg transition"
+          >
+            <span>Inquire via WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

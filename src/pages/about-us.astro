@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+const pageTitle = "About Us & Safety Standards | Hurghada Airport Limousine";
+const pageDesc = "Learn about Hurghada Airport Limousine: Ministry of Tourism licensing, police-vetted drivers, comprehensive passenger insurance, and 24/7 Red Sea dispatch.";
+const canonicalUrl = "https://hurghadaairportlimousine.com/about-us/";
+---
+
+<Layout title={pageTitle} description={pageDesc} canonicalUrl={canonicalUrl}>
+  <Header />
+
+  <main class="bg-white">
+    <div class="bg-slate-950 text-white pt-10 pb-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto space-y-4 text-center md:text-left">
+        <Breadcrumbs items={[{ name: "About Us", url: "/about-us" }]} />
+        <span class="inline-block px-3 py-1 bg-amber-400/20 text-amber-300 text-xs font-black uppercase tracking-wider rounded-full">
+          Official Tourism Transport
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white">
+          About Hurghada Airport Limousine
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+          Dedicated to providing international vacationers and divers landing at Hurghada International Airport (HRG) with reliable, air-conditioned, and transparent resort transfers across the Red Sea Riviera.
+        </p>
+      </div>
+    </div>
+
+    <!-- Safety & Vetting Pillars -->
+    <section class="py-16 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-4">
+          <span class="text-xs font-black uppercase text-indigo-600 tracking-wider">Our Story</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            A Seamless Arrival to the Red Sea
+          </h2>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Arriving at Hurghada International Airport (HRG) after a long flight should be the relaxing start to your holiday. Yet, navigating airport exit gates, haggling with unofficial taxi touts, and dealing with unairconditioned vehicles can quickly disrupt your travel plans.
+          </p>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            We created Hurghada Airport Limousine to deliver complete peace of mind. Your chauffeur tracks your flight in real time, waits outside the terminal exit under the designated arrivals canopy holding a personalized name sign, assists with dive gear and suitcases, and drives you straight to your resort or hotel anywhere in El Gouna, Sahl Hasheesh, Makadi Bay, Soma Bay, or beyond.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 space-y-6">
+          <h3 class="text-lg font-black text-slate-900">Company Credentials</h3>
+          <ul class="space-y-4 text-xs sm:text-sm text-slate-700">
+            <li class="flex items-start gap-3">
+              <span class="text-amber-500 font-bold text-base">🛡️</span>
+              <div>
+                <strong>Egyptian Ministry of Tourism:</strong> Official Red Sea Tourism Transport License #52840.
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-500 font-bold text-base">👮</span>
+              <div>
+                <strong>100% Police Vetted Chauffeurs:</strong> Mandatory security clearance, criminal background checks, and clean driving records.
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-500 font-bold text-base">🚗</span>
+              <div>
+                <strong>Commercial Insurance:</strong> Full passenger liability insurance coverage on all fleet vehicles across Egypt.
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-500 font-bold text-base">🕒</span>
+              <div>
+                <strong>24/7 Red Sea Dispatch:</strong> Continuous flight radar monitoring and multilingual customer service on WhatsApp and phone.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Trust Metrics -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-slate-100 text-center">
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-3xl font-black text-slate-900 block">24,500+</span>
+          <span class="text-xs text-slate-500 mt-1 block">Completed Hurghada Transfers</span>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-3xl font-black text-amber-500 block">4.9 / 5</span>
+          <span class="text-xs text-slate-500 mt-1 block">Average Guest Rating</span>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-3xl font-black text-indigo-600 block">60 Mins</span>
+          <span class="text-xs text-slate-500 mt-1 block">Free Airport Waiting Time</span>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-3xl font-black text-emerald-600 block">100%</span>
+          <span class="text-xs text-slate-500 mt-1 block">Guaranteed Fixed Rates</span>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

@@ -1,0 +1,130 @@
+---
+const destinations = [
+  {
+    name: "El Gouna & Abu Tig Marina",
+    slug: "hurghada-airport-to-el-gouna",
+    tag: "Lagoon Venice",
+    desc: "The Red Sea's premier integrated resort town, featuring picturesque turquoise lagoons, vibrant superyacht marinas, gourmet dining, and kitesurfing.",
+    time: "30 - 35 mins",
+    distance: "38 km",
+    fromPrice: "$25",
+    highlights: ["Abu Tig Marina", "The Chedi & Casa Cook", "Kite Surfing"],
+    image: "/images/hero-banner.jpg"
+  },
+  {
+    name: "Sahl Hasheesh Luxury Bay",
+    slug: "hurghada-airport-to-sahl-hasheesh",
+    tag: "Luxury All-Inclusive",
+    desc: "An exclusive gated resort enclave located just 20 minutes south of Hurghada, known for opulent 5-star beachfront palaces and scenic seaside promenades.",
+    time: "20 - 25 mins",
+    distance: "22 km",
+    fromPrice: "$18",
+    highlights: ["Baron Palace", "The Oberoi Beach Resort", "Sunken City Pier"],
+    image: "/images/hero-banner.jpg"
+  },
+  {
+    name: "Makadi Bay & Madinat Makadi",
+    slug: "hurghada-airport-to-makadi-bay",
+    tag: "Family & Golf Haven",
+    desc: "A stunning natural bay filled with world-class family aqua parks, 18-hole championship golf, pristine house reefs, and top luxury hotel brands.",
+    time: "25 - 30 mins",
+    distance: "32 km",
+    fromPrice: "$22",
+    highlights: ["Jaz Makadi", "Makadi Water World", "Championship Golf"],
+    image: "/images/hero-banner.jpg"
+  },
+  {
+    name: "Soma Bay Peninsula",
+    slug: "hurghada-airport-to-soma-bay",
+    tag: "Golf & Thalasso",
+    desc: "A peaceful peninsula surrounded on all sides by crystal-clear waters. Home to the world-renowned Cascades Thalasso spa, Gary Player golf course, and kite lagoons.",
+    time: "45 - 50 mins",
+    distance: "52 km",
+    fromPrice: "$32",
+    highlights: ["Kempinski Soma Bay", "The Cascades Thalasso", "7Bft Kite Center"],
+    image: "/images/alexandria-coast.jpg"
+  }
+];
+---
+
+<section id="destinations" class="py-16 md:py-24 bg-slate-50 border-b border-slate-200/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="text-xs font-black tracking-widest text-indigo-600 uppercase mb-2">
+        EXPLORE THE RED SEA RIVIERA
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Popular Resort Destinations from Hurghada Airport (HRG)
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-2">
+        Whether you are heading to a luxury villa in El Gouna, a beachfront palace in Sahl Hasheesh, or a golf resort in Soma Bay, our private chauffeurs guarantee cool, comfortable transit.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {destinations.map((place) => (
+        <div class="bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+          
+          <div class="relative h-44 overflow-hidden bg-slate-100">
+            <img 
+              src={place.image} 
+              alt={place.name} 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/95 text-slate-900 rounded-md">
+              {place.tag}
+            </span>
+            <span class="absolute bottom-3 left-3 text-xs font-semibold text-white flex items-center gap-1">
+              <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              {place.time} ({place.distance})
+            </span>
+          </div>
+
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition">
+                {place.name}
+              </h3>
+              <p class="text-xs text-slate-500 mt-2 line-clamp-3 leading-relaxed">
+                {place.desc}
+              </p>
+
+              <!-- Highlights tags -->
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                {place.highlights.map((tag) => (
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-slate-400 block leading-none">From</span>
+                <span class="text-xl font-black text-slate-900">{place.fromPrice}</span>
+              </div>
+              <a 
+                href={`/transfers/${place.slug}`} 
+                class="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 group/link"
+              >
+                <span>Book transfer</span>
+                <svg class="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

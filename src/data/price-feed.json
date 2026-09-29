@@ -1,0 +1,117 @@
+{
+  "currency": "USD",
+  "last_updated": "2026-09-29T00:00:00Z",
+  "disclaimer": "Prices are indicative and checked weekly. Final price confirmed during booking.",
+  "routes": {
+    "hurghada-airport-to-el-gouna": {
+      "starting_price": 25,
+      "currency": "USD",
+      "updated_at": "2026-09-29T00:00:00Z",
+      "options": [
+        { "vehicle_class": "Sedan", "price": 25.0, "estimated_duration_mins": 35 },
+        { "vehicle_class": "Minivan", "price": 38.0, "estimated_duration_mins": 35 },
+        { "vehicle_class": "Executive", "price": 65.0, "estimated_duration_mins": 35 },
+        { "vehicle_class": "Minibus", "price": 95.0, "estimated_duration_mins": 35 }
+      ]
+    },
+    "hurghada-airport-to-makadi-bay": {
+      "starting_price": 22,
+      "currency": "USD",
+      "updated_at": "2026-09-29T00:00:00Z",
+      "options": [
+        { "vehicle_class": "Sedan", "price": 22.0, "estimated_duration_mins": 30 },
+        { "vehicle_class": "Minivan", "price": 34.0, "estimated_duration_mins": 30 },
+        { "vehicle_class": "Executive", "price": 55.0, "estimated_duration_mins": 30 },
+        { "vehicle_class": "Minibus", "price": 85.0, "estimated_duration_mins": 30 }
+      ]
+    },
+    "hurghada-airport-to-sahl-hasheesh": {
+      "starting_price": 18,
+      "currency": "USD",
+      "updated_at": "2026-09-29T00:00:00Z",
+      "options": [
+        { "vehicle_class": "Sedan", "price": 18.0, "estimated_duration_mins": 25 },
+        { "vehicle_class": "Minivan", "price": 28.0, "estimated_duration_mins": 25 },
+        { "vehicle_class": "Executive", "price": 50.0, "estimated_duration_mins": 25 },
+        { "vehicle_class": "Minibus", "price": 75.0, "estimated_duration_mins": 25 }
+      ]
+    },
+    "hurghada-airport-to-soma-bay": {
+      "starting_price": 32,
+      "currency": "USD",
+      "updated_at": "2026-09-29T00:00:00Z",
+      "options": [
+        { "vehicle_class": "Sedan", "price": 32.0, "estimated_duration_mins": 50 },
+        { "vehicle_class": "Minivan", "price": 48.0, "estimated_duration_mins": 50 },
+        { "vehicle_class": "Executive", "price": 80.0, "estimated_duration_mins": 50 },
+        { "vehicle_class": "Minibus", "price": 115.0, "estimated_duration_mins": 50 }
+      ]
+    },
+    "hurghada-airport-to-hurghada-city": {
+      "starting_price": 15,
+      "currency": "USD",
+      "updated_at": "2026-09-29T00:00:00Z",
+      "options": [
+        { "vehicle_class": "Sedan", "price": 15.0, "estimated_duration_mins": 15 },
+        { "vehicle_class": "Minivan", "price": 24.0, "estimated_duration_mins": 15 },
+        { "vehicle_class": "Executive", "price": 45.0, "estimated_duration_mins": 15 },
+        { "vehicle_class": "Minibus", "price": 65.0, "estimated_duration_mins": 15 }
+      ]
+    },
+    "hurghada-airport-to-safaga": {
+      "starting_price": 35,
+      "currency": "USD",
+      "updated_at": "2026-09-29T00:00:00Z",
+      "options": [
+        { "vehicle_class": "Sedan", "price": 35.0, "estimated_duration_mins": 55 },
+        { "vehicle_class": "Minivan", "price": 52.0, "estimated_duration_mins": 55 },
+        { "vehicle_class": "Executive", "price": 85.0, "estimated_duration_mins": 55 },
+        { "vehicle_class": "Minibus", "price": 125.0, "estimated_duration_mins": 55 }
+      ]
+    },
+    "hurghada-airport-to-el-quseir": {
+      "starting_price": 65,
+      "currency": "USD",
+      "updated_at": "2026-09-29T00:00:00Z",
+      "options": [
+        { "vehicle_class": "Sedan", "price": 65.0, "estimated_duration_mins": 110 },
+        { "vehicle_class": "Minivan", "price": 95.0, "estimated_duration_mins": 110 },
+        { "vehicle_class": "Executive", "price": 145.0, "estimated_duration_mins": 110 },
+        { "vehicle_class": "Minibus", "price": 195.0, "estimated_duration_mins": 110 }
+      ]
+    },
+    "hurghada-airport-to-port-ghalib-marsa-alam": {
+      "starting_price": 95,
+      "currency": "USD",
+      "updated_at": "2026-09-29T00:00:00Z",
+      "options": [
+        { "vehicle_class": "Sedan", "price": 95.0, "estimated_duration_mins": 160 },
+        { "vehicle_class": "Minivan", "price": 145.0, "estimated_duration_mins": 160 },
+        { "vehicle_class": "Executive", "price": 210.0, "estimated_duration_mins": 160 },
+        { "vehicle_class": "Minibus", "price": 280.0, "estimated_duration_mins": 160 }
+      ]
+    },
+    "hurghada-to-luxor": {
+      "starting_price": 140,
+      "currency": "USD",
+      "updated_at": "2026-09-29T00:00:00Z",
+      "options": [
+        { "vehicle_class": "Sedan", "price": 140.0, "estimated_duration_mins": 220 },
+        { "vehicle_class": "Minivan", "price": 195.0, "estimated_duration_mins": 220 },
+        { "vehicle_class": "Executive", "price": 290.0, "estimated_duration_mins": 220 },
+        { "vehicle_class": "Minibus", "price": 380.0, "estimated_duration_mins": 220 }
+      ]
+    },
+    "hurghada-to-cairo": {
+      "starting_price": 180,
+      "currency": "USD",
+      "updated_at": "2026-09-29T00:00:00Z",
+      "options": [
+        { "vehicle_class": "Sedan", "price": 180.0, "estimated_duration_mins": 320 },
+        { "vehicle_class": "Minivan", "price": 270.0, "estimated_duration_mins": 320 },
+        { "vehicle_class": "Executive", "price": 370.0, "estimated_duration_mins": 320 },
+        { "vehicle_class": "Minibus", "price": 470.0, "estimated_duration_mins": 320 }
+      ]
+    }
+  }
+}

@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import PopularTransfers from '../components/PopularTransfers.astro';
+import FleetCategories from '../components/FleetCategories.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import AirportOverview from '../components/AirportOverview.astro';
+import PickupAndBookingGuides from '../components/PickupAndBookingGuides.astro';
+import ServiceFeatures from '../components/ServiceFeatures.astro';
+import InformationAccordions from '../components/InformationAccordions.astro';
+import FAQSection from '../components/FAQSection.astro';
+import PreFooterCTA from '../components/PreFooterCTA.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+const siteUrl = "https://hurghadaairportlimousine.com";
+const pageTitle = "Hurghada Airport Limousine | Official Airport Taxi & Transfers HRG";
+const pageDesc = "Hurghada Airport Limousine: Pre-book private airport transfers from HRG directly to your resort in El Gouna, Sahl Hasheesh, Makadi Bay, or Soma Bay. Fixed rates & 24/7 support.";
+
+// Rich JSON-LD Schemas (BreadcrumbList, HowTo & FAQPage; Master TaxiService schema in Layout)
+const homeSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": `${siteUrl}/`
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Book Hurghada Airport Transfer & Meet Your Chauffeur",
+    "description": "Step-by-step guide to reserving private airport transfers from Hurghada International Airport (HRG) and meeting your chauffeur curbside outside the arrivals exit.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Select Vehicle & Destination",
+        "text": "Choose your sedan, family minivan, executive VIP Mercedes, or minibus online, entering your flight number and destination resort in El Gouna, Sahl Hasheesh, Makadi Bay, or Soma Bay."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Live Flight Tracking & Radar Sync",
+        "text": "Our 24/7 HRG flight dispatch monitors your landing time automatically. Driver pickup times synchronize with delays or early arrivals with 60 minutes free wait time."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Purchase Egypt Visa & Clear Immigration",
+        "text": "Disembark at Terminal 1 or 2, purchase your official $25 USD Egypt Tourist Visa at the bank window before passport control, collect luggage from the baggage carousel, and clear customs."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Meet Chauffeur Outside Arrivals Exit",
+        "text": "Step outside the glass exit doors where your licensed driver is holding a personalized greeting board with your name."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Door-to-Door Resort Drop-off",
+        "text": "Relax in air-conditioned comfort as your chauffeur transports you via direct coastal expressways directly to your hotel or resort reception."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where will I meet my driver at Hurghada International Airport?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your chauffeur will wait right outside the arrival exit doors of Terminal 1 or Terminal 2, immediately after you pass through customs and baggage reclaim. They will hold an official greeting sign clearly displaying your name."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if my flight to Hurghada is delayed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No need to worry! We track your flight in real time using the flight number provided during booking. Your pickup time is automatically synchronized with your actual landing time, and your complimentary 60-minute wait time begins only when your flight actually lands."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a paid visa for Hurghada Airport?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Hurghada is in the Red Sea Governorate on mainland Egypt. All foreign tourists from eligible nations require an Egypt Tourist Visa ($25 USD), obtainable at official bank kiosks in the arrivals hall before passport control, or online via the eVisa portal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the prices listed per person or per vehicle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All our prices are 100% per vehicle, not per passenger. The price shown for your selected vehicle covers your entire party up to the vehicle's maximum passenger and luggage capacity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does free cancellation work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can cancel or modify your transfer reservation free of charge up to 24 hours prior to your scheduled pickup time with a 100% full refund, no questions asked. Simply contact our support team or WhatsApp dispatch."
+        }
+      }
+    ]
+  }
+];
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDesc}
+  canonicalUrl={`${siteUrl}/`}
+  schema={homeSchemas}
+  preloadImage="/images/hero-banner.webp"
+>
+  <!-- Global Navigation Header -->
+  <Header />
+
+  <main class="space-y-0">
+    <!-- 1. Hero Banner with Integrated Search Engine & Consolidated Trust Strip -->
+    <Hero />
+
+    <!-- 2. Airport Overview & Terminals Passenger Guide -->
+    <AirportOverview />
+
+    <!-- 3. Popular Hotel & Resort Transfers (Programmatic Routes Linkage) -->
+    <PopularTransfers />
+
+    <!-- 4. Step-by-Step Terminal Arrival & Booking Guides -->
+    <PickupAndBookingGuides />
+
+    <!-- 5. Vehicle Classes & Capacities (Fleet Guide) -->
+    <FleetCategories />
+
+    <!-- 6. Service Guarantees & Features Checklist -->
+    <ServiceFeatures />
+
+    <!-- 7. How Your Airport Pickup Works (3 Simple Steps) -->
+    <HowItWorks />
+
+    <!-- 8. Informational Accordions (Baggage Guidelines, Terminal Meeting Points, Departure Times) -->
+    <InformationAccordions />
+
+    <!-- 9. Frequently Asked Questions (Structured FAQ Accordion) -->
+    <FAQSection />
+
+    <!-- 10. Pre-Footer Call to Action Banner -->
+    <PreFooterCTA />
+  </main>
+
+  <!-- Global Footer with Silo Link Architecture -->
+  <Footer />
+
+  <!-- Instant 24/7 WhatsApp Concierge Button -->
+  <WhatsAppFloat />
+</Layout>

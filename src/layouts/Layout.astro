@@ -1,0 +1,253 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  keywords?: string;
+  ogImage?: string;
+  type?: string;
+  schema?: Record<string, any> | Record<string, any>[];
+  preloadImage?: string;
+}
+
+const {
+  title = "Hurghada Airport Limousine | Official Airport Taxi & Transfers HRG",
+  description = "Hurghada Airport Limousine provides official private airport transfers and luxury chauffeur service at Hurghada International Airport (HRG) with guaranteed fixed rates to El Gouna, Sahl Hasheesh, Makadi Bay, and Soma Bay.",
+  canonicalUrl,
+  keywords = "Hurghada airport transfers, Hurghada airport taxi, Hurghada airport limousine, Hurghada airport to El Gouna, Hurghada airport to Makadi Bay, Hurghada airport to Sahl Hasheesh, Hurghada airport to Soma Bay, HRG airport transfers, Egypt Red Sea transfers, book Hurghada airport transfer, reserve Hurghada limousine",
+  ogImage = "/images/hero-banner.jpg",
+  type = "website",
+  schema,
+  preloadImage
+} = Astro.props;
+
+// Canonical URL generation
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://hurghadaairportlimousine.com';
+let canonical = canonicalUrl || new URL(Astro.url.pathname, `${siteUrl}/`).href;
+if (!canonical.endsWith('/')) {
+  canonical = `${canonical}/`;
+}
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+// Default Sitewide TaxiService & LimousineService Schema
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": ["TaxiService", "LimousineService"],
+  "@id": `${siteUrl}/#service`,
+  "name": "Hurghada Airport Limousine",
+  "alternateName": [
+    "Hurghada Airport Limousine & Transfers",
+    "Hurghada Airport Taxi Service",
+    "Hurghada Airport Private Transfers",
+    "Hurghada Airport Transfers",
+    "HRG Airport Taxi Limousine",
+    "Transfer from Hurghada Airport"
+  ],
+  "serviceType": [
+    "Hurghada Airport Private Transfers",
+    "Hurghada Airport Limousine",
+    "Hurghada Airport Taxi Service",
+    "Red Sea Resort Airport Transfers",
+    "El Gouna Airport Transfers",
+    "Private Airport Chauffeur Service"
+  ],
+  "url": `${siteUrl}/`,
+  "logo": `${siteUrl}/images/logo/logo-brand.png`,
+  "image": `${siteUrl}/images/hero-banner.jpg`,
+  "telephone": "+201094066018",
+  "priceRange": "$$",
+  "currenciesAccepted": "USD, EUR, GBP, EGP",
+  "paymentAccepted": "Credit Card, Debit Card, Apple Pay, Cash",
+  "areaServed": [
+    { "@type": "Airport", "name": "Hurghada International Airport", "iataCode": "HRG" },
+    { "@type": "AdministrativeArea", "name": "Hurghada" },
+    { "@type": "AdministrativeArea", "name": "El Gouna" },
+    { "@type": "AdministrativeArea", "name": "Sahl Hasheesh" },
+    { "@type": "AdministrativeArea", "name": "Makadi Bay" },
+    { "@type": "AdministrativeArea", "name": "Soma Bay" },
+    { "@type": "AdministrativeArea", "name": "Safaga" },
+    { "@type": "AdministrativeArea", "name": "Red Sea Governorate" }
+  ],
+  "description": "Official Hurghada airport private transfers and luxury limousine service. Direct hotel & resort pickup, meet outside with name sign, fixed transparent pricing, and 24/7 dispatch.",
+  "keywords": "Hurghada airport transfers, Hurghada airport taxi, Hurghada airport limousine, El Gouna transfer, Makadi bay transfer, Sahl Hasheesh transfer, Soma Bay transfer",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Hurghada Airport Transfer & Limousine Services",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "Airport Transfer Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hurghada Airport Private Transfers",
+              "description": "Direct private airport taxi transfer from HRG terminals to Red Sea resorts"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hurghada Airport VIP Limousine",
+              "description": "Chauffeur-driven executive VIP Mercedes limousine from Hurghada Airport"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hurghada Airport to El Gouna Transfers",
+              "description": "Fixed-rate door-to-door coastal transfers connecting HRG with El Gouna"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1420",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 27.1783,
+    "longitude": 33.7994
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+201094066018",
+    "contactType": "customer service",
+    "availableLanguage": ["English", "Arabic", "German", "Russian", "Italian"],
+    "contactOption": "TollFree",
+    "areaServed": "EG"
+  },
+  "knowsAbout": [
+    "Hurghada Airport Transfers",
+    "Hurghada Airport Limousine",
+    "El Gouna Transfers",
+    "Makadi Bay Transfers",
+    "Sahl Hasheesh Transfers",
+    "Soma Bay Transfers",
+    "Egypt Tourist Visa Information",
+    "Meet and Greet Terminal 1 and 2",
+    "Flight Delay Tracking HRG"
+  ],
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Hurghada Airport Limousine Dispatch Co.",
+    "image": `${siteUrl}/images/hero-banner.jpg`,
+    "priceRange": "$$",
+    "telephone": "+201094066018",
+    "url": `${siteUrl}/`,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Hurghada International Airport, Airport Road",
+      "addressLocality": "El Dahar",
+      "addressRegion": "Red Sea Governorate",
+      "postalCode": "84511",
+      "addressCountry": "EG"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.1783,
+      "longitude": 33.7994
+    }
+  }
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:site_name" content="Hurghada Airport Limousine" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImage} />
+
+    <!-- Resource Hints & Preload -->
+    {preloadImage && (
+      <link rel="preload" as="image" type="image/webp" href={preloadImage} fetchpriority="high" />
+    )}
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+    </noscript>
+
+    <!-- JSON-LD Structured Data Injection -->
+    <script type="application/ld+json" set:html={JSON.stringify(defaultSchema)} />
+    {schema && (
+      <script 
+        type="application/ld+json" 
+        set:html={JSON.stringify(Array.isArray(schema) ? schema : [schema])} 
+      />
+    )}
+
+    <meta name="generator" content={Astro.generator} />
+
+    <style is:global>
+      body {
+        font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+        color: #1e293b;
+        background-color: #ffffff;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col antialiased selection:bg-amber-100 selection:text-amber-900">
+    <slot />
+  </body>
+</html>
