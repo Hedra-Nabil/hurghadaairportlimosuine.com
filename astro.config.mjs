@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://hurghadaairportlimousine.com',
+  site: 'https://hurghadaairportlimosuine.com',
   // Directory output serves these pages at slash-terminated paths. Keep
   // generated URLs, canonicals, and the sitemap aligned with that format.
   trailingSlash: 'always',

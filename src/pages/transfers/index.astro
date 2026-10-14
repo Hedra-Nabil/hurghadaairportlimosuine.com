@@ -9,7 +9,7 @@ import { transferRoutes } from '../../data/routes';
 
 const pageTitle = "Hurghada Airport Transfer Routes | All Destinations & Fixed Rates";
 const pageDesc = "Explore all Hurghada Airport transfer routes from HRG. Compare fixed prices, travel times, and book direct hotel transfers to El Gouna, Sahl Hasheesh, Makadi Bay & Soma Bay.";
-const canonicalUrl = "https://hurghadaairportlimousine.com/transfers/";
+const canonicalUrl = "https://hurghadaairportlimosuine.com/transfers/";
 
 // Group routes by region
 const hurghadaResortsRoutes = transferRoutes.filter(r => [
@@ -41,7 +41,7 @@ const transferCatalogSchemas = [
     "itemListElement": transferRoutes.map((route, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "url": `https://hurghadaairportlimousine.com/transfers/${route.slug}/`,
+      "url": `https://hurghadaairportlimosuine.com/transfers/${route.slug}/`,
       "name": route.heroHeadline
     }))
   },
@@ -53,7 +53,7 @@ const transferCatalogSchemas = [
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://hurghadaairportlimousine.com/"
+        "item": "https://hurghadaairportlimosuine.com/"
       },
       {
         "@type": "ListItem",

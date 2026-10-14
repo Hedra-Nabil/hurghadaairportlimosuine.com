@@ -124,7 +124,7 @@ export const fleetVehicles: FleetVehicle[] = [
       },
       {
         q: "Is the price per person or per car?",
-        a: "All prices on HurghadaAirportLimousine.com are strictly per vehicle, NOT per person. A private sedan costs the same flat rate whether 1, 2, or 3 passengers are traveling."
+        a: "All prices on hurghadaairportlimosuine.com are strictly per vehicle, NOT per person. A private sedan costs the same flat rate whether 1, 2, or 3 passengers are traveling."
       },
       {
         q: "Where will the driver meet me at Hurghada Airport?",

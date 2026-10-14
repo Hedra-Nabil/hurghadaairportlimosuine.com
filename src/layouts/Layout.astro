@@ -22,7 +22,7 @@ const {
 } = Astro.props;
 
 // Canonical URL generation
-const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://hurghadaairportlimousine.com';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://hurghadaairportlimosuine.com';
 let canonical = canonicalUrl || new URL(Astro.url.pathname, `${siteUrl}/`).href;
 // Normalize to the site's configured slash-terminated URL format, except root.
 const canonicalUrlObject = new URL(canonical);
