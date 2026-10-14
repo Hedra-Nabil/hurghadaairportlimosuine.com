@@ -24,9 +24,12 @@ const {
 // Canonical URL generation
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://hurghadaairportlimousine.com';
 let canonical = canonicalUrl || new URL(Astro.url.pathname, `${siteUrl}/`).href;
-if (!canonical.endsWith('/')) {
-  canonical = `${canonical}/`;
-}
+// Normalize to the site's configured slash-terminated URL format, except root.
+const canonicalUrlObject = new URL(canonical);
+canonicalUrlObject.pathname = canonicalUrlObject.pathname === '/'
+  ? '/'
+  : `${canonicalUrlObject.pathname.replace(/\/+$/, '')}/`;
+canonical = canonicalUrlObject.href;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
 // Default Sitewide TaxiService & LimousineService Schema
@@ -105,13 +108,6 @@ const defaultSchema = {
         ]
       }
     ]
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "1420",
-    "bestRating": "5",
-    "worstRating": "1"
   },
   "openingHoursSpecification": [
     {

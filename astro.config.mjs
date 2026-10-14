@@ -5,25 +5,27 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://hurghadaairportlimousine.com',
-  trailingSlash: 'never',
+  // Directory output serves these pages at slash-terminated paths. Keep
+  // generated URLs, canonicals, and the sitemap aligned with that format.
+  trailingSlash: 'always',
   integrations: [
     tailwind(),
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date(),
       serialize(item) {
-        const url = item.url.replace(/\/$/, '');
-        if (url === 'https://hurghadaairportlimousine.com') {
+        const url = new URL(item.url);
+        const path = url.pathname.replace(/\/$/, '') || '/';
+        if (path === '/') {
           item.priority = 1.0;
-          item.changefreq = 'daily';
-        } else if (url.includes('/transfers/')) {
+          item.changefreq = 'weekly';
+        } else if (path.startsWith('/transfers/')) {
           item.priority = 0.9;
           item.changefreq = 'weekly';
-        } else if (url.includes('/airports/') || url.includes('/fleet/')) {
+        } else if (path.startsWith('/airports/') || path.startsWith('/fleet/')) {
           item.priority = 0.8;
           item.changefreq = 'weekly';
-        } else if (url.includes('/services/')) {
+        } else if (path.startsWith('/services/')) {
           item.priority = 0.7;
           item.changefreq = 'weekly';
         } else {
